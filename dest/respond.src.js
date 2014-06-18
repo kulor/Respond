@@ -191,6 +191,7 @@
     }
     applyMedia();
   }, makeRequests = function() {
+    var event;
     if (requestQueue.length) {
       var thisRequest = requestQueue.shift();
       ajax(thisRequest.href, function(styles) {
@@ -200,6 +201,9 @@
           makeRequests();
         }, 0);
       });
+    } else {
+      event = new w.Event("respondFinished");
+      w.document.dispatchEvent(event);
     }
   }, ripCSS = function() {
     for (var i = 0; i < links.length; i++) {

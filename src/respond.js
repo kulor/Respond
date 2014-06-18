@@ -299,8 +299,8 @@
 			}
 			// Taken from http://stackoverflow.com/questions/23253623/how-to-create-a-custom-event-listener-for-respond-js
 			else {
-                event = new Event("respondFinished");
-		        document.dispatchEvent(event);
+                event = new w.Event("respondFinished");
+		        w.document.dispatchEvent(event);
             }
 		},
 
