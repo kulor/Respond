@@ -284,6 +284,7 @@
 
 		//recurse through request queue, get css text
 		makeRequests = function(){
+		    var event;
 			if( requestQueue.length ){
 				var thisRequest = requestQueue.shift();
 
@@ -296,6 +297,11 @@
 					w.setTimeout(function(){ makeRequests(); },0);
 				} );
 			}
+			// Taken from http://stackoverflow.com/questions/23253623/how-to-create-a-custom-event-listener-for-respond-js
+			else {
+                event = new Event("respondFinished");
+		        document.dispatchEvent(event);
+            }
 		},
 
 		//loop stylesheets, send text content to translate
